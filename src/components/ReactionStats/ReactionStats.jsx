@@ -10,9 +10,9 @@ function ReactionStats({ likes, views, commentCount }) {
 
     return (
         <div className="reaction-stats">
-        <img src={likeIcon} alt="likes" width="16" height="16" /> {likes}
-        <img src={viewIcon} alt="views" width="16" height="16" /> {formatViews(views)}
-        <img src={commentIcon} alt="comments" width="16" height="16" /> {commentCount}
+        <span><img src={likeIcon} alt="likes" width="16" height="16" /> {likes} likes </span>
+        <span><img src={viewIcon} alt="views" width="16" height="16" /> {formatViews(views)} views </span>
+        <span><img src={commentIcon} alt="comments" width="16" height="16" /> {commentCount} comments </span>
         </div>
     );
     }
