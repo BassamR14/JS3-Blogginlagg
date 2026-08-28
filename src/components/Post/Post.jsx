@@ -13,6 +13,7 @@ function Post({ data }) {
     <>
       <div className={style.post}>
         <h2>{title}</h2>
+        <TagList tags={tags} />
         <p> {body} </p>
 
         <ReactionStats
@@ -22,7 +23,6 @@ function Post({ data }) {
         />
 
 
-        <button>Show User Information</button>
         <button
           onClick={() => {
             setShow(!show);
