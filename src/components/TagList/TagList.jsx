@@ -1,8 +1,9 @@
+import style from "./TagList.module.css";
 function TagList ({ tags }) {
     return (
-        <div className="tag-list"> 
+        <div className={style["tag-list"]}> 
             {tags.map((tag) => (
-                <span key={tag} className="tag">
+                <span key={tag} className={style["tag-pill"]}>
                     {tag}
                 </span>
             ))}
