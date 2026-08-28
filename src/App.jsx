@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import PostList from "./components/PostList/PostList";
 import "./App.css";
 
 function App() {
@@ -15,7 +15,12 @@ function App() {
     getData();
   }, []);
 
-  return <></>;
+  return (
+    <>
+      <h1>Dev Blog</h1>
+      <PostList data={posts} />
+    </>
+  );
 }
 
 export default App;
