@@ -1,7 +1,11 @@
 import style from "./Post.module.css";
+import UserInfo from "../UserInfo/UserInfo";
+import { useState } from "react";
 
 function Post({ data }) {
   const { body, id, reactions, tags, title, userId, views } = data;
+
+  const [show, setShow] = useState(false);
 
   return (
     <>
@@ -9,7 +13,14 @@ function Post({ data }) {
         <h2>{title}</h2>
         <p> {body} </p>
 
-        <button>Show User Information</button>
+        <button
+          onClick={() => {
+            setShow(!show);
+          }}
+        >
+          Show User Information
+        </button>
+        {show && <UserInfo props={userId} />}
       </div>
     </>
   );

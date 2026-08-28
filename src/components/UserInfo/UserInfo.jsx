@@ -1,34 +1,34 @@
 import { useState, useEffect } from "react";
 
-function UserInfo({userId}) {
+function UserInfo({ props }) {
+  const [userData, setUserData] = useState(null);
 
-    const [userData, setUserData] = useState(null);
+  useEffect(
+    () => {
+      let getUser = async () => {
+        //use template literals to get variable inside the link
+        let response = await fetch(`https://dummyjson.com/users/${props}`);
+        let data = await response.json();
+        setUserData(data);
+      };
 
-    useEffect(() => {
+      getUser();
+    },
+    //add dependency array with variable/value that changes
+    [props],
+  );
 
-        let getUser = async () => {
-            let response = await fetch("https://dummyjson.com/users/{user.id}");
-            let data = await response.json();
-            setUserData(data);
-        };
+  //guard against user being null, can crash the app
+  if (!userData) return <p>Loading...</p>;
 
-        getUser();
-
-    }
-
-)
-
-    return (
-
-        <div className = "user-info">
-            <p>@{userData.username}</p>
-            <p>{userData.email}</p>
-            <p>{userData.city}</p>
-        </div>
-
-
-    )
-
+  return (
+    <div className="user-info">
+      <p>@{userData.username}</p>
+      <p>{userData.email}</p>
+      {/* userdata doesn't have city directly, need to access address first */}
+      <p>{userData.address.city}</p>
+    </div>
+  );
 }
 
-export default UserInfo
+export default UserInfo;
